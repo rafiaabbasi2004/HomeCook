@@ -1,0 +1,58 @@
+.footer-wrapper {
+    position: relative;
+    background-color: #f5e2cb;;
+    overflow: hidden;
+}
+
+/* Top Wave */
+.wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 1;
+}
+
+.wave-top svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Actual footer content */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 20px 40px 20px;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0 10%;
+    position: relative;
+    z-index: 2; /* above wave */
+}
+
+.newsletter {
+    font-weight: bolder;
+}
+
+.newsletter h1 span {
+    color: #ff8800;
+}
+
+.contactus input {
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.subscribe-btn {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 7px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
