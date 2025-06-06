@@ -32,12 +32,14 @@
     font-size: 1rem;
     color: #000000;
     text-align: center;
+    cursor: pointer;
     
 }
 .menu-item-menupage a{
     color: #000000;
     text-decoration: none;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 .menu-item-menupage:hover{
     background-color: #ff8800;
@@ -48,4 +50,5 @@
 .menu-item-menupage a:hover{
     color: white;
     transition: 0.3s;
+    cursor: pointer;
 }

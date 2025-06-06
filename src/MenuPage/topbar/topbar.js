@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./topbar.css";
-import Navbar from "../../HomePage/navbar/navbar";
+import Navbar from "../../components/navbar/navbar";
 import { Link } from "react-router-dom";
 import { useCart } from "../../CartContext"; // Adjust the path as needed
 
@@ -15,7 +15,7 @@ export default function Topbar() {
 
 
 
-    const [activeCategory, setActiveCategory] = useState("BreakFast");
+    const [activeCategory, setActiveCategory] = useState("Today's Food");
 
     const menuItems = ["Today's Food", "Today's Drinks", "Today's Deserts", "Tommorows Menu"];
 

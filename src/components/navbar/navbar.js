@@ -13,8 +13,8 @@ const Navbar = () => {
 
             <ul className="navbar-list">
                 <li className="navbar-item"><a href="/">Home</a></li>
-                <li className="navbar-item"><a href="/about">About us</a></li>
-                <li className="navbar-item"><a href="/footer">Contact</a></li>
+                <li className="navbar-item"><a href="#about">About us</a></li>
+                <li className="navbar-item"><a href="#footer">Contact</a></li>
                 <li className="navbar-item"><a href="/topbar">Menu</a></li>
             </ul>
         </nav>

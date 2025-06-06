@@ -1,6 +1,3 @@
-import react from 'react';
-import navbar from '../navbar/navbar.js';
-import home from '../mainpage/home.js';
 import image from '../aboutus/aboutimage.jpeg'
 import "./about.css"
 import { useNavigate } from 'react-router-dom';

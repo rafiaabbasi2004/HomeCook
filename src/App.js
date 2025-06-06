@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./MenuPage/topbar/topbar";
-import Navbar from "./HomePage/navbar/navbar";
+import Navbar from "./components/navbar/navbar";
 import Home from "./HomePage/mainpage/home";
 import About from "./HomePage/aboutus/about";
 import Category from "./HomePage/categories/category";
@@ -11,6 +11,9 @@ import Footer from "./HomePage/footer/footer";
 import CartPage from "./Cartpage"; // optional, if you make a cart page
 import Card from "./MenuPage/Cardpage/cardpage";
 import Checkout from "./Checkout";
+import Homepage from "./pages/Homepage";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CardHeader from "./components/cardheader";
 // import CartPage from "./MenuPage/Cardpage/CartPage"; // optional, if you make a cart page
 
 export default function App() {
@@ -22,13 +25,9 @@ export default function App() {
           path="/"
           element={
             <>
-              <Navbar />
-              <Home />
-              <About />
-              <Category />
-              <Menu />
-              <Testimonial />
-              <Footer />
+              {/* <Navbar />
+              <Homepage /> */}
+              <CardHeader />
             </>
           }
         />

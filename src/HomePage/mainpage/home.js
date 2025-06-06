@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import logo from "../navbar/foodlogo.png";
+import logo from "../../components/navbar/foodlogo.png";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigateto = useNavigate();

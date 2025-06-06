@@ -35,7 +35,7 @@ const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
             <div className="Top-header">
                 <button className="back-button" onClick={backbutton}>Back</button>
                 <Link to="/cart" className="cart-icon">
-                    🛒 {totalItems}
+                    My Cart🛒 {totalItems}
                 </Link>
             </div>
 
