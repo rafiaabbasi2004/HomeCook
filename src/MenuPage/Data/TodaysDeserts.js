@@ -1,13 +1,28 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../CartContext"; // adjust path
-import { itemsDeserts } from "./Data";
+import { useState, useEffect } from "react";
 import "./todaysmenu.css"; // adjust path
 
 export default function TodaysDeserts() {
-    const todaysDeserts = itemsDeserts.filter(item => {
+     const [meals, setMeals] = useState([]);
+    
+
+      useEffect(() => {
+        fetch("http://localhost:5000/api/meals") // Change URL if needed
+          .then((res) => res.json())
+          .then((data) => setMeals(data))
+          .catch((err) => console.error("Failed to fetch meals:", err));
+      }, []);
+    
+    const Deserts = meals.filter(item => {
         return (item.date || item.Date)?.toLowerCase() === "today";
     });
+    
+  // Filter meals by category
+  const todaysDeserts = Deserts.filter(
+    (item) => item.category === "Deserts"
+  );
     const { addToCart } = useCart();
     const navigate = useNavigate();
 
@@ -23,7 +38,7 @@ export default function TodaysDeserts() {
             <div className="breakfast-content">
                 {todaysDeserts.map((item, index) => (
                     <div key={index} className="breakfast-item">
-                        <img src={item.image} alt={item.heading} className="breakfast-image" />
+                        <img src={`http://localhost:5000/${item.image}`} alt={item.heading} className="breakfast-image" />
                         <h3>
                             <a onClick={() => onclick(item)}>{item.heading}</a>
                         </h3>

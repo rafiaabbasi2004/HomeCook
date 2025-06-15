@@ -1,6 +1,7 @@
 .breakfast-header{
     justify-content: center;
     text-align: center;
+    margin: 5% 0;
 }
 .breakfast-subheader{
     display: flex;
@@ -57,5 +58,10 @@
 
 .breakfast-button{
     align-self: center;
-    margin: 0 20%;
+    margin: 3% 20%;
+    background-color: #ff8800;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    border: white;
 }

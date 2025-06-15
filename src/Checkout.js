@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useCart } from "./CartContext"; // adjust path if needed
 import "./Checkout.css";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // If you want to redirect
 
 const Checkout = () => {
   const { cartItems, clearCart } = useCart();
@@ -19,15 +21,44 @@ const Checkout = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Order placed successfully!");
-    console.log("Order details:", {
-      items: cartItems,
-      user: formData,
-    });
-    clearCart(); // clear cart after order
+
+// Inside the component
+const navigate = useNavigate();
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const token = localStorage.getItem('token'); // Ensure you're storing token on login
+
+  const orderPayload = {
+    meals: cartItems.map(item => ({
+      meal: item._id, // Must be real MongoDB ID from the DB
+      quantity: item.persons || 1,
+      totalPrice: item.price * (item.persons || 1),
+    })),
+    deliveryAddress: `${formData.address}, ${formData.city}`,
   };
+
+  try {
+    const response = await axios.post(
+      'http://localhost:5000/api/orders/place',
+      orderPayload,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    alert("Order placed successfully!");
+    clearCart();
+    console.log(response.data);
+    navigate('/thankyou'); // optional redirect
+  } catch (err) {
+    console.error("Order error:", err);
+    alert("Failed to place order");
+  }
+};
+
 
   return (
     <div className="checkout-page">
@@ -38,11 +69,11 @@ const Checkout = () => {
         <ul className="checkout-cart-list">
           {cartItems.map((item, index) => (
             <li key={index} className="checkout-cart-item">
-              <img src={item.image} alt={item.heading} className="checkout-cart-img" />
+              <img src={`http://localhost:5000/${item.image}`} alt={item.heading} className="checkout-cart-img" />
               <div>
                 <h4>{item.heading}</h4>
-                <p>Quantity: {item.quantity}</p>
-                <p>Subtotal: ${item.price * item.quantity}</p>
+                <p>Quantity: {item.serves}</p>
+                <p>Subtotal: ${item.price * item.serves}</p>
               </div>
             </li>
           ))}

@@ -47,7 +47,7 @@ const CartPage = () => {
               return (
                 <li key={index} className="cart-item">
                   <img
-                    src={item.image}
+                    src={`http://localhost:5000/${item.image}`}
                     alt={item.heading}
                     className="cart-item-img"
                   />
